@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HT</name>
+    </assembly>
+    <members>
+        <member name="M:HT.Controllers.TestController.GetData">
+            <summary>
+            获取数据
+            </summary>
+            <returns>返回数据</returns>
+        </member>
+    </members>
+</doc>
