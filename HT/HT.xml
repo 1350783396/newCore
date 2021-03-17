@@ -4,6 +4,11 @@
         <name>HT</name>
     </assembly>
     <members>
+        <member name="M:HT.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{HT.Controllers.TestController},HTDal.CmDbContext)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:HT.Controllers.TestController.GetData">
             <summary>
             获取数据
