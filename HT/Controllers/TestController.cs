@@ -1,4 +1,5 @@
-﻿using HTDal;
+﻿using HT.Extensions;
+using HTDal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -31,6 +32,7 @@ namespace HT.Controllers
         [HttpGet]
         public IActionResult GetData()
         {
+            var isTrialVersion = ConfigurationManager.AppSettings.IsTrialVersion;
             var data = dbCM.TaobaoShop.ToList();
             return Ok("123");
         }
