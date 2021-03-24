@@ -48,7 +48,7 @@ namespace HT
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
-            });
+            });//https://localhost:44327/swagger/index.html
 
             // ×¢ÈëÈÕÖ¾
             services.AddLogging(config =>
