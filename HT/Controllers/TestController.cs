@@ -1,5 +1,6 @@
 ﻿using HT.Extensions;
 using HTDal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,7 +12,8 @@ namespace HT.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class TestController : Controller
+    [Authorize]
+    public class TestController : ControllerBase
     {
 
         private readonly CmDbContext dbCM;

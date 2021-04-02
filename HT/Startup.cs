@@ -1,4 +1,5 @@
 using HTDal;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,12 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HT
@@ -31,6 +34,39 @@ namespace HT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+
+
+            #region jwt
+            var Issurer = "JWTBearer.Auth";  //发行人
+            var Audience = "api.auth";       //受众人
+            var secretCredentials = "q2xiARx$4x3TKqBJ";   //密钥
+
+            //配置认证服务
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //是否验证发行人
+                    ValidateIssuer = true,
+                    ValidIssuer = Issurer,//发行人
+                                          //是否验证受众人
+                    ValidateAudience = true,
+                    ValidAudience = Audience,//受众人
+                                             //是否验证密钥
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretCredentials)),
+
+                    ValidateLifetime = true, //验证生命周期
+                    RequireExpirationTime = true, //过期时间
+                };
+            });
+
+            #endregion
 
             services.AddDbContext<CmDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
@@ -69,7 +105,9 @@ namespace HT
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            //认证 
+            app.UseAuthentication();
+            //授权
             app.UseAuthorization();
 
 
