@@ -35,7 +35,7 @@ namespace HT.Controllers
                 var nbf = DateTime.UtcNow;
                 //expires   //过期时间
                 // long Exp = new DateTimeOffset(DateTime.Now.AddSeconds(1000)).ToUnixTimeSeconds();
-                var Exp = DateTime.UtcNow.AddSeconds(5);
+                var Exp = DateTime.UtcNow.AddSeconds(1000);
                 //signingCredentials  签名凭证
                 string sign = "q2xiARx$4x3TKqBJ"; //SecurityKey 的长度必须 大于等于 16个字符
                 var secret = Encoding.UTF8.GetBytes(sign);
