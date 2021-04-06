@@ -32,8 +32,12 @@ namespace HT.Controllers
         /// </summary>
         /// <returns>返回数据</returns>
         [HttpGet]
+        [Authorize(Roles = "advanced")]
         public IActionResult GetData()
         {
+            var name = User.FindFirst("Name")?.Value;
+            var id = User.FindFirst("id")?.Value;
+
             var isTrialVersion = ConfigurationManager.AppSettings.IsTrialVersion;
             var data = dbCM.TaobaoShop.ToList();
             return Ok("123");

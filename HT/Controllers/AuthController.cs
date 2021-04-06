@@ -29,6 +29,7 @@ namespace HT.Controllers
                 {
                 new Claim(JwtClaimTypes.Id,"1"),
                 new Claim(JwtClaimTypes.Name,"yjc"),
+                new Claim(JwtClaimTypes.Role,"advanced"),//权限
                 };
                 //notBefore  生效时间
                 // long nbf =new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
