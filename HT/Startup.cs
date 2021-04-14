@@ -1,3 +1,4 @@
+using HT.Configurations;
 using HTDal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -67,6 +68,10 @@ namespace HT
             });
 
             #endregion
+
+
+            services.AddAutoMapper(typeof(AutoMapperConfigs));
+
 
             services.AddDbContext<CmDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))

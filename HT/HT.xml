@@ -9,7 +9,7 @@
             是否是体验版
             </summary>
         </member>
-        <member name="M:HT.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{HT.Controllers.TestController},HTDal.CmDbContext)">
+        <member name="M:HT.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{HT.Controllers.TestController},HTDal.CmDbContext,AutoMapper.IMapper)">
             <summary>
             
             </summary>

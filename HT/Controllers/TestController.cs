@@ -1,5 +1,8 @@
-﻿using HT.Extensions;
+﻿using AutoMapper;
+using HT.Extensions;
+using HT.ViewModels;
 using HTDal;
+using HTDal.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,20 +15,21 @@ namespace HT.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    [Authorize]
+    //[Authorize]
     public class TestController : ControllerBase
     {
 
         private readonly CmDbContext dbCM;
         private readonly ILogger _logger;
-
+        private readonly IMapper autoMapper;
         /// <summary>
         /// 
         /// </summary>
-        public TestController(ILogger<TestController> logger, CmDbContext cmDb)
+        public TestController(ILogger<TestController> logger, CmDbContext cmDb, IMapper mapper)
         {
             dbCM = cmDb;
             _logger = logger;
+            autoMapper = mapper;
         }
         /// <summary>
         /// 获取数据
@@ -42,7 +46,14 @@ namespace HT.Controllers
             var data = dbCM.TaobaoShop.ToList();
             return Ok("123");
         }
+        [HttpGet]
+        public IActionResult TestAutoMapper()
+        {
+            TB_TaobaoShop taobao = new TB_TaobaoShop() { id = 1, ShopName = "天猫" };
+            TaobaoShopView tb = autoMapper.Map<TB_TaobaoShop, TaobaoShopView>(taobao);
 
+            return Ok("123");
+        }
 
     }
 }
