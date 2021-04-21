@@ -1,4 +1,5 @@
 using HT.Configurations;
+using HT.Utils;
 using HTDal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -34,9 +35,12 @@ namespace HT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region redis
+            var redis = Configuration.GetSection("Redis").Get<Redis>();//转为实例
+            services.AddSingleton(new RedisHelper(redis.Connection, redis.InstanceName, redis.DefaultDB));
+            #endregion
+
             services.AddControllers();
-
-
 
             #region jwt
             var Issurer = "JWTBearer.Auth";  //发行人
