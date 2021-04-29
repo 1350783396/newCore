@@ -65,5 +65,11 @@ namespace HT.Controllers
             string xingming = redis.StringGet("xingming");
             return Ok(xingming);
         }
+        [HttpGet]
+        public IActionResult GetUrl()
+        {
+            string str = (Request.HttpContext.Connection.LocalIpAddress.MapToIPv4().ToString() + ":" + Request.HttpContext.Connection.LocalPort) + "士大夫";
+            return Ok(str);
+        }
     }
 }
