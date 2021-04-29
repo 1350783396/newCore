@@ -9,7 +9,7 @@
             是否是体验版
             </summary>
         </member>
-        <member name="M:HT.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{HT.Controllers.TestController},HTDal.CmDbContext,AutoMapper.IMapper,HT.Utils.RedisHelper)">
+        <member name="M:HT.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{HT.Controllers.TestController},HTDal.CmDbContext,AutoMapper.IMapper)">
             <summary>
             
             </summary>
@@ -29,35 +29,6 @@
             <summary>
             读取配置文件[AppSettings]节点数据
             </summary>
-        </member>
-        <member name="P:HT.Redis.Connection">
-            <summary>
-            连接字符串
-            </summary>
-        </member>
-        <member name="P:HT.Redis.InstanceName">
-            <summary>
-            实例名称
-            </summary>
-        </member>
-        <member name="P:HT.Redis.DefaultDB">
-            <summary>
-            默认数据库
-            </summary>
-        </member>
-        <member name="M:HT.Utils.RedisHelper.GetConnect">
-            <summary>
-            获取ConnectionMultiplexer
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:HT.Utils.RedisHelper.GetDatabase">
-            <summary>
-            获取数据库
-            </summary>
-            <param name="configName"></param>
-            <param name="db">默认为0：优先代码的db配置，其次config中的配置</param>
-            <returns></returns>
         </member>
     </members>
 </doc>
