@@ -101,6 +101,7 @@ namespace HT
                 config.AddLog4Net();
             });
 
+            services.AddSingleton<Microsoft.Extensions.Hosting.IHostedService, AccessTokenJob>();//第二个为工作调度的类名
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -45,6 +45,12 @@
             默认数据库
             </summary>
         </member>
+        <member name="M:HT.Utils.AccessTokenJob.WriteAsyncLog(System.String)">
+            <summary>
+            异步写日志
+            </summary>
+            <param name="strLog"></param>
+        </member>
         <member name="M:HT.Utils.RedisHelper.GetConnect">
             <summary>
             获取ConnectionMultiplexer
